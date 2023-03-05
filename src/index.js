@@ -1,4 +1,5 @@
-import React from 'react';
+
+/**import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -11,7 +12,27 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+ */
+
+//extensiones: simple react snippets
+
+//imr+tab
+import React from "react"
+import ReactDom from "react-dom/client"
+import Giphy from "./Giphy"
+
+import HelloWorld from "./HelloWorld"
+import MyPage from "./MyPage"
+import "./styles.css"
+
+
+//Componentes siempre en mayuscula!!
+ReactDom.createRoot(document.getElementById("root")).render(
+    //renderizar todo lo que esta en root
+    //<HelloWorld titulo="Formulario feo" fecha="03/02/2023"/>
+    //<Giphy/>
+  <React.StrictMode>
+    <MyPage/>
+  </React.StrictMode>
+)
