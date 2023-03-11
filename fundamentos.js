@@ -6,8 +6,10 @@
     HOOKS
     
     --> uef+tab  | useEffect() | re-render cuando sus dependencias cambian: . EJ: boton de refrescar sin recargar pagina
+                               | sin dependencia se llama solo una vez, return controla desmontaje.
     --> uref+tab | useRef()    |
-    --> usf+tab  | useState()  | cuando cambia el valor se renderiza la porcion en donde se este uasndo
+    --> usf+tab  | useState()  | cambiar el valor renderiza todo donde está:
+                               | se puede usar su Callback para llamar valores anteriores (value)=>{...value}
 
     EXTRAS
     --> clg+tab  | console.log() 
@@ -21,6 +23,8 @@
     -- componentes padres pueden enviar data a componentes hijos con props, se recomienda filtrar data desde padres
     !!-- input type="text" name="hola"  | "hola" es el nombre de la variable que enviará al backend por http
                                         | todos valores que esten en name se enviarán post
+    -- (()=>{}) retorna JSX
+    -- (()=>()) retorna HTML
    
     //PROPS:
 
@@ -37,6 +41,11 @@
     //PROPTYPES
         --definir tipado de props, String, Number, exist, etc..
         --title:PropTypes.string.isRequired
+    //FORMULARIOS
+    
+        --onClick  | click en el elemento HTML
+        --onChange | cambios en elemento HTML | event.target.value       tiene el valor de la funcion OnChange
+        --onSubmit | envia todos los valores  | event.preventDefault()   previene envío de formulario y recarga de pagina
               
 //METODOS HTTP
     --GET    | leer

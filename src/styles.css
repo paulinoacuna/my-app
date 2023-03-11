@@ -18,6 +18,7 @@
     outline: none;
     padding: 10px 15px;
     width: 100%;
+    margin-bottom: 15px;
   }
   
   h2 {
@@ -29,13 +30,48 @@
     margin-bottom: 5px;
   }
   
-  .card-grid {
+  
+  .card img {
+    width: 100%;
+  }
+
+  button{
+      width: 100px;
+      padding: 7px 0;
+      background-color: green;
+      color: white;
+      border-radius: 5px;
+      border: none;
+      box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  button:hover{
+    background-color: rgb(0, 188, 0);
+  }
+
+  img{
+   width: 300px;
+   height: auto
+  }
+
+  .gifsContainer {
+    display: flex;
+    flex-wrap: wrap;
+ 
+  }
+/*mis estilos*/
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gifGrid {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
   }
-  
+
   .card {
     align-content: center;
     align-items: center;
@@ -45,21 +81,24 @@
     display: flex;
     flex-direction: column;
     height: 0%;  
+    margin: 0 0.5%;
     justify-content: center;
-    margin-bottom: 20px;
-    margin-right: 20px;
     overflow: hidden;
+    width: 48%;
+  }
+
+  h4 {
+    font-size: 1.5em;
   }
   
+
   .card p {
+    color: teal;
     background-color: white;
     flex: 1;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-top: 5px;
     padding: 5px 20px 0px 20px;
     text-align: center;
-  }
-  
-  .card img {
-    width: 100%;
+
   }
