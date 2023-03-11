@@ -46,6 +46,11 @@
         --onClick  | click en el elemento HTML
         --onChange | cambios en elemento HTML | event.target.value       tiene el valor de la funcion OnChange
         --onSubmit | envia todos los valores  | event.preventDefault()   previene envío de formulario y recarga de pagina
+
+    //FORMIK + ANT
+        --<Formik onSubmit={submit()}
+                  initialValues={{ name: 'jared' }}
+                  validationSchema="">
               
 //METODOS HTTP
     --GET    | leer
@@ -68,7 +73,20 @@
     -- todas las apps deberian usar token
     -- se guardan en localStorage o cookies para autologueado
     -- ej: https://api.giphy.com/v1/gifs/random?api_key=2ZXewLdwiAGZPgVkSLn3AqitEO6CeN4I | request parameter: ?api_key=
-*/
+
+//REACT DOM ROUTER
+    --libreria para crear rutas
+    --componentes: <Routes/>, <Route path="/..." element={<componenteAEnrutar/>}/> 
+
+
+//REDUX
+    --contenedor global para guardar data en variables en toda la aplicacion | useSelector((store))
+    -- reducers: funciones que operan con mi store
+    --Configuración:
+        1. crear store.js y importar configureStore() para obtener reducer
+        2. en index.js envolver BrowserRoutes en un <Provider store={store}/>
+        3: para auth: crear authSlice.js, importar createSlice({name,initialState,reducers}) y exportar reducers de authSlice.actions
+    */
 
 
 

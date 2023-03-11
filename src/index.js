@@ -20,10 +20,18 @@ reportWebVitals();
 //imr+tab
 import React from "react"
 import ReactDom from "react-dom/client"
-import Giphy from "./Giphy"
+//Router
+import { BrowserRouter } from "react-router-dom"
+//Redux
+import {Provider} from "react-redux"
+import {store} from "./store/store"
 
+
+import Giphy from "./Giphy"
 import HelloWorld from "./HelloWorld"
+import JournalApp from "./JournalApp"
 import MyPage from "./MyPage"
+
 import "./styles.css"
 
 
@@ -34,7 +42,13 @@ ReactDom.createRoot(document.getElementById("root")).render(
     //<Giphy/>
 
     //restrict mode genera warnings
-  <React.StrictMode> 
-    <MyPage/>
+  <React.StrictMode>   
+
+    <Provider store={store}>
+      <BrowserRouter>
+        <JournalApp/>
+      </BrowserRouter>
+    </Provider>
+
   </React.StrictMode>
 )
