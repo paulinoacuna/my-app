@@ -26,14 +26,10 @@ import { BrowserRouter } from "react-router-dom"
 import {Provider} from "react-redux"
 import {store} from "./store/store"
 
-
-import Giphy from "./Giphy"
-import HelloWorld from "./HelloWorld"
 import JournalApp from "./JournalApp"
-import MyPage from "./MyPage"
+import MyPage from "./examples/MyPage"
 
 import "./styles.css"
-
 
 //Componentes siempre en mayuscula!!
 ReactDom.createRoot(document.getElementById("root")).render(
