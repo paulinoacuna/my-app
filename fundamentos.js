@@ -47,11 +47,18 @@
         --onChange | cambios en elemento HTML | event.target.value       tiene el valor de la funcion OnChange
         --onSubmit | envia todos los valores  | event.preventDefault()   previene envío de formulario y recarga de pagina
 
-    //FORMIK + ANT
+    //FORMIK + ANT + YUP
         --<Formik onSubmit={submit()}
                   initialValues={{ name: 'jared' }}
                   validationSchema="">
-              
+        ANT
+        -- <Modal BodyStyle={{background: blue;}} open={true} onCancel=callback footer=null or footer=<button>Aceptar</button> >
+        -- <CheckboxGroup onChange={{event=>clg(event)}}>
+            <Checkbox value={1}></Checkbox>
+           </CheckboxGroup>
+        
+
+
 //METODOS HTTP
     --GET    | leer
     --POST   | agregar
@@ -81,31 +88,19 @@
 
 //REDUX
     --contenedor global para guardar data en variables en toda la aplicacion | useSelector((store))
-    -- reducers: funciones que operan con mi store
+
+    CONCEPTOS:
+
+    -- Actions: const myAction = {type: auth/login}         | Obj JSON | {type: ""} reglas que indican una accion sobre store
+    -- Reducers: const myReducer = (state,myAction)=>state  | Func     | motor que transforma reglas action => logica
+    -- store: {nombre, Actions, myReducer}                  | Obj JSON | {data} que usa el reducers como motor para hacerse CRUD
+    -- store.dispatch(action)                               | Ejecuta un motor (reducer) en la store dada una regla (action)
+    
+    --useSelector()     | llamado a la store desde componente.jsx
+
+
     --Configuración:
         1. crear store.js y importar configureStore() para obtener reducer
         2. en index.js envolver BrowserRoutes en un <Provider store={store}/>
         3: para auth: crear authSlice.js, importar createSlice({name,initialState,reducers}) y exportar reducers de authSlice.actions
     */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
