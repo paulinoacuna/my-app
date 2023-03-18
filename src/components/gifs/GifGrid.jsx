@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getGifts } from '../../helpers/getGifts'
+import { getGifts } from '../../middleware/getGifts'
 import GifGridItem from './GifGridItem';
 
 const GifGrid = ({categoria}) => {

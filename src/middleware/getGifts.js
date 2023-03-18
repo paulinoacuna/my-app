@@ -12,4 +12,4 @@ export const getGifts = async (categoria)=>{
             url: element.images.downsized_medium.url
         }))
         return gifsArray
-    }
+    }  

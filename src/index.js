@@ -30,6 +30,9 @@ import JournalApp from "./JournalApp"
 import MyPage from "./examples/MyPage"
 
 import "./styles.css"
+//import 'bootstrap/dist/css/bootstrap.css';
+// Put any other imports below so that CSS from your
+// components takes precedence over default styles.
 
 //Componentes siempre en mayuscula!!
 ReactDom.createRoot(document.getElementById("root")).render(
