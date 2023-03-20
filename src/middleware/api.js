@@ -1,6 +1,6 @@
 import {user} from "../fakeData"
 
-//controlando llamado backend o fakeDatas
+//IMPORTANT controlando llamado backend o fakeDatas
 const enableApi = false;
 
 const url = "localhost:4001/api/v1"
@@ -11,7 +11,12 @@ export const getAuth = async ({email,password}) => {
     // Default options are marked with *
 
     if (!enableApi) {
-        return user
+      if(email === "danielc@gmail.com" && password === "123456"){
+        return user[0]
+      }else{
+        return user[1]
+      }
+
     }else{
     const data = {
         email: email,
