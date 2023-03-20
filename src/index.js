@@ -27,7 +27,7 @@ import {Provider} from "react-redux"
 import {store} from "./store/store"
 
 import JournalApp from "./JournalApp"
-import MyPage from "./examples/MyPage"
+//import MyPage from "./examples/MyPage"
 
 import "./styles.css"
 //import 'bootstrap/dist/css/bootstrap.css';

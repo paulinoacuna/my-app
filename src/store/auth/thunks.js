@@ -1,6 +1,6 @@
-import { async } from "@firebase/util"
-import { useDispatch } from "react-redux"
+//import { useDispatch } from "react-redux"
 import { registerUserWithEmailAndPassword, signInWithGoogle } from "../../firebase/providers"
+
 import {chechingCredentials,login} from "./authSlice"
 
 
@@ -23,5 +23,14 @@ export const startCreatingWithEmailAndPassword=(email,password,displayName)=>{
     return async (dispatch)=>{
         const res = await registerUserWithEmailAndPassword(email,password,displayName)
         console.log(res)
+    }
+}
+
+
+export const saveUserLogin = (data)=>{
+    return async (dispatch)=>{
+        const res = await dispatch(login(data))
+        console.log(res)
+
     }
 }

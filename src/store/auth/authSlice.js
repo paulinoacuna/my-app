@@ -4,19 +4,23 @@ export const authSlice = createSlice({
     name: "auth",
     initialState: {
         status: "not-authenticated",
-        uid: null,
+        id: null,
         email: null,
-        displayName: null,
+        name: null,
         photoUrl: null,
-        errorMessage: null
+        message: null,
+        role: null
     },
     reducers: {
         login: (state,{payload})=>{
-            state.uid = payload.uid
-            state.displayName = payload.displayName
-            state.email = payload.email
-            state.photoUrl = payload.photoUrl
-            state.errorMessage = null
+            state.status = payload.state
+            state.id = payload.id
+            state.message = payload.message
+            state.name = payload.name
+            state.role = payload.role
+            //state.email = payload.email
+            //state.photoUrl = payload.photoUrl
+       
         },
         logout: (state,payload)=>{},
         chechingCredentials: (state)=>{

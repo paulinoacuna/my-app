@@ -1,7 +1,7 @@
 //configuracion para auth con google
 
 import {createUserWithEmailAndPassword, GoogleAuthProvider,signInWithPopup} from "firebase/auth"
-import { Children } from "react";
+//import { Children } from "react";
 
 import {firebaseAuth} from "./config"
 
