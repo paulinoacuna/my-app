@@ -38,7 +38,7 @@ const [loading, setLoading] = React.useState(false);
   
         if(response?.state) {
           console.log(response)
-          localStorage.setItem(response);
+          localStorage.setItem("user",JSON.stringify(response));
           dispatch(saveUserLogin(response))
           navigate("/app")
         }else{
