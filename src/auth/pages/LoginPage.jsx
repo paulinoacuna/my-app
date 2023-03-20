@@ -37,7 +37,6 @@ const [loading, setLoading] = React.useState(false);
         const response = await getAuth(formValues)
   
         if(response?.state) {
-          console.log(response)
           localStorage.setItem("user",JSON.stringify(response));
           dispatch(saveUserLogin(response))
           navigate("/app")

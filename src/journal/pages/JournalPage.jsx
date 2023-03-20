@@ -1,4 +1,5 @@
 import React from 'react'
+import "./styles.css"
 
 const JournalPage = () => {
 
@@ -7,9 +8,10 @@ const JournalPage = () => {
   console.log(JSON.parse(cat))
 
   return (
-    <>
+    <div className='app-container'>
 
-    </>
+
+    </div>
   )
 }
 
