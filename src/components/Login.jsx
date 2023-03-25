@@ -21,8 +21,8 @@ const Login = ({setformValues, loading}) => {
   const [passwordShown, setPasswordShown] = useState(false);
   
   const initialValues = {
-    email: "danielc@gmail.com",
-    password: "123456"
+    email: "pepito@gmail.com",
+    password: "passAdmin"
   }
 
   const submit = ()=>{
@@ -43,7 +43,7 @@ const Login = ({setformValues, loading}) => {
   return (
     <>
     <div className='img'>
-        <img src="https://placekitten.com/468/400" alt='login picture'/>
+        <img src="https://placekitten.com/468/400" alt='login'/>
       </div>
       <div className='login'>
       <Card className='card'

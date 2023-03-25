@@ -34,19 +34,31 @@ const [loading, setLoading] = React.useState(false);
     console.log("Sesión iniciada")
 
       setLoading(true);
+      try {
         const response = await getAuth(formValues)
-  
+
         if(response?.state) {
           localStorage.setItem("user",JSON.stringify(response));
+
           dispatch(saveUserLogin(response))
           navigate("/app")
+          
         }else{
           //alerta, correo y password invalidos
-          toast.warn('Correo y contraseña inválidos. Intenta nuevamente.', {
+          toast.warn('Correo o contraseña inválidos. Intenta nuevamente.', {
             position: "bottom-right",
             });
         }
+
+      } catch (error) {
+        console.error(error);
+        //alerta, correo y password invalidos
+        toast.warn('Error en la solicitud. Intenta mas tarde.', {
+          position: "bottom-right",
+          });
+      }
       setLoading(false)
+
   }
 
 useEffect(() => {
