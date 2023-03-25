@@ -1,16 +1,13 @@
-
-import React, { useState,useEffect } from 'react'
-import { useNavigate} from "react-router-dom"
-//import AppCard from '../../components/AppCard';
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import AppNavbar from '../../components/AppNavbar';
-import DashBoard from '../../components/DashBoard';
 import SideNavbar from '../../components/SideNavbar';
+import ManageQuestions from '../../components/ManageQuestions';
 
-import "./styles.css"
+const QuestionsPage = () => {
 
-
-const JournalPage = () => {
-
+  
+  
 const navigate = useNavigate();
 const [user, setUser] = useState();
 
@@ -20,15 +17,17 @@ const [user, setUser] = useState();
     user?.token ? setUser(user) : navigate("/auth/login")
   }, []);
 
+
+
   return (
     <div className='app-container'>
-        <AppNavbar user={user}/>
+      <AppNavbar user={user}/>
     <div className='down' >
-        <SideNavbar user={user}/>
-        <DashBoard  user={user}/>
+      <SideNavbar user={user}/>
+      <ManageQuestions/>
     </div>
     </div>
   )
 }
 
-export default JournalPage
+export default QuestionsPage
