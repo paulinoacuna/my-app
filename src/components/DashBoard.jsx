@@ -10,8 +10,8 @@ const DashBoard = ({user}) => {
 
   return (
     <div className='right-dashboard'>
-      <AppCard cardName="Administrar usuarios" cardUrl= "/admin/users" cardLabel= "Ver, crear y eliminar usuarios administrativos o estudiantes"/>      
-      <AppCard cardName="Administrar preguntas" cardUrl= "/admin/questions" cardLabel= "Visualiza todas tus preguntas, crea nuevas, cambialas o eliminalas"/>
+      <AppCard cardName="Administra tus usuarios" cardUrl= "/admin/users" cardLabel= "Ver, crear y eliminar usuarios administrativos o estudiantes"/>      
+      <AppCard cardName="Gestiona tus preguntas" cardUrl= "/admin/questions" cardLabel= "Visualiza todas tus preguntas, crea nuevas, o cambialas"/>
       
     </div>
    

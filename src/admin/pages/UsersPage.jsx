@@ -11,10 +11,11 @@ const navigate = useNavigate();
 const [user, setUser] = useState();
 
   useEffect(() => {
-    //get user localStorage
+    //verify token
     const user = JSON.parse(localStorage.getItem("user"))
     user?.token ? setUser(user) : navigate("/auth/login")
   }, []);
+
 
 
   return (

@@ -10,7 +10,8 @@ const SideNavbar = ({user}) => {
   return (
 
     <div className='left-navbar'>
-        <Link className='item' to="/admin/users">Administrar estudiantes</Link>
+        <Link className='item' to="/app">DashBoard</Link>
+        <Link className='item' to="/admin/users">Administrar Usuarios</Link>
         <Link className='item' to="/admin/questions">Gestionar preguntas</Link>
         <Link className='item' to="/auth/logout">Salir</Link>
     </div>

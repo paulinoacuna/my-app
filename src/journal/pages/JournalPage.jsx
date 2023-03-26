@@ -4,6 +4,7 @@ import { useNavigate} from "react-router-dom"
 //import AppCard from '../../components/AppCard';
 import AppNavbar from '../../components/AppNavbar';
 import DashBoard from '../../components/DashBoard';
+import FloatingAction from '../../components/FloatingAction';
 import SideNavbar from '../../components/SideNavbar';
 
 import "./styles.css"
@@ -23,10 +24,11 @@ const [user, setUser] = useState();
   return (
     <div className='app-container'>
         <AppNavbar user={user}/>
-    <div className='down' >
-        <SideNavbar user={user}/>
-        <DashBoard  user={user}/>
-    </div>
+        <div className='down' >
+            <SideNavbar user={user}/>
+            <DashBoard  user={user}/>
+        </div>
+        <FloatingAction/>
     </div>
   )
 }
