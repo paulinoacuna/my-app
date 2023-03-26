@@ -62,31 +62,33 @@ const Search = styled('div')(({ theme }) => ({
 
 const Searchbar = ({type}) => {
 
-const [searchValue, setSearchValue] = useState();
-
+const [searchValue, setSearchValue] = useState("");
+const [inputValue, setInputValue] = useState("");
     
-const Search_btn = (event) => {
+const Search_btn = (value) => {
 
-    
-    if (event){
-        console.log(event.target.value)
-        setSearchValue(event.target.value)
-
+    if (value){
+        if (value.trim() !== ""){
+            setInputValue(value)
+            setSearchValue(value.trim())
+        }
     }
-    
-    console.log("buenas")
+
+
+    //fetch de usuario value return searchValue
 }
 
 const Clear_btn = () => {
     
-    console.log("buenas")
+    setSearchValue("")
+
+    setInputValue("")
+    //limiar form
+   
 }
   
-
-
-
-
- 
+        
+console.log(searchValue)
 
   return (
     <Box sx={{ flexGrow: 1 , width: 1}}>
@@ -110,7 +112,8 @@ const Clear_btn = () => {
             <StyledInputBase
               placeholder="Buscar..."
               inputProps={{ 'aria-label': 'search' }}
-              onChange={(event)=>Search_btn(event)}
+              onChange={(event)=>Search_btn(event.target.value)}
+              value={inputValue}
             />
           </Search>
 
