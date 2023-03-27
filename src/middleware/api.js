@@ -1,7 +1,10 @@
 import {user} from "../fakeData"
+import { getLocalUser } from "../helpers/ManageLocalStorage";
 
 //IMPORTANT controlando llamado backend o fakeDatas
 const enableApi = true;
+
+
 
 const url = "http://127.0.0.1:4001/api/v1"
 let path = ""
@@ -48,7 +51,9 @@ export const getAuth = async ({email,password}) => {
   }
 }
 
-export const getUsers = async (token)=>{
+export const getUsers = async ()=>{
+
+  let {token} = getLocalUser()
   path = `${url}/user/getUsers`
 
     
@@ -69,5 +74,30 @@ export const getUsers = async (token)=>{
   
 }
 
+export const updateUser = async (data)=> {
+  let {token} = getLocalUser()
+
+  console.log(data)
+
+
+    
+  path = `${url}/user/update/${data.document}`
+
+
+    
+  const response = await fetch(path, {
+
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",   
+        'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify(data),
+  }
+  );
   
+  return response.json(); // parses JSON response into native JavaScript objects
+
+
+}
 

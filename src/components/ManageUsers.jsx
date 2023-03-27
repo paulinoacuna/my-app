@@ -10,7 +10,8 @@ import { useNavigate } from 'react-router';
 //notifications
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import AppTable2 from './AppTable';
+
+import AppModal from './AppModal';
 
 
 
@@ -22,7 +23,7 @@ const ManageUsers = () => {
   useEffect(() => {
    const user = getLocalUser()
    if (user?.token){
-    loadUsers(user)
+    loadUsers()
   }else{
     navigate("/auth/login")
   }
@@ -30,10 +31,10 @@ const ManageUsers = () => {
 }, []);
 
 
-const loadUsers = async (user)=>{
+const loadUsers = async ()=>{
   
   try {
-    const response = await getUsers(user?.token)
+    const response = await getUsers()
 
     if(response?.state) {
       localStorage.setItem("users",JSON.stringify(response));
@@ -56,12 +57,22 @@ const loadUsers = async (user)=>{
   }
 }
 
+const [modal, setModal] = useState({open: false,type: "info",  data: null});
 
+const handleModal = (event) => {
+  setModal(event)
+}
+
+const handleRefresh = () => {
+  loadUsers()
+}
+
+console.log(modal)
   return (
     <div style={{width: "80%", marginLeft: "15px"}}>
       <Searchbar type="usuario"/>
       <br />
-      <AppTable usersArray={users}/>
+      <AppTable usersArray={users} activeModal={(event)=>{handleModal(event)}}/>
       <ToastContainer 
             position="top-center"
             autoClose={10000}
@@ -74,6 +85,7 @@ const loadUsers = async (user)=>{
             pauseOnHover
             theme="light" />
 
+      <AppModal opened={modal?.open} data={modal?.data} type={modal?.type} activeModal={(event)=>{handleModal(event)}} refresh={()=>handleRefresh()}/>
     </div>
   )
 }
