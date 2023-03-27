@@ -25,7 +25,7 @@ const [user, setUser] = useState();
     <div className='down' >
       <SideNavbar user={user}/>
       <ManageUsers/>
-      <FloatingAction/>
+      <FloatingAction typeAction={"createUser"}/>
     </div>
     </div>
   )

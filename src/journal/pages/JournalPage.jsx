@@ -28,7 +28,7 @@ const [user, setUser] = useState();
             <SideNavbar user={user}/>
             <DashBoard  user={user}/>
         </div>
-        <FloatingAction/>
+        
     </div>
   )
 }

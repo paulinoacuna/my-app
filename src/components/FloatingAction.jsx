@@ -2,13 +2,49 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
+import AppModal from './AppModal';
+import CreateModal from './CreateModal';
+import { useState } from 'react';
 
-export default function FloatingAction() {
+export default function FloatingAction({typeAction}) {
+
+
+const [modal, setModal] = useState({open: false,type: "info",  data: null});
+
+
+//createUser
+
+
+
+const handleAction = (typeAction)=>{
+  switch (typeAction) {
+    case "createUser":
+      //active Modal
+      setModal({open: true,type: "createUser",  data: null})
+    break;
+
+    case "createQuestion":
+      //active Modal
+      
+    break;
+  
+    default:
+      break;
+  }
+}
+
+const handleModal = (event) => {
+  setModal(event)
+}
+
+
   return (
     <Box sx={{ m: 1 , position: "fixed", right: 20, bottom: 20} }>
-      <Fab color="primary" aria-label="add">
+      <Fab onClick={()=>{handleAction(typeAction)}} color="primary" aria-label="add">
         <AddIcon />
       </Fab>
+       <CreateModal opened={modal?.open} activeModal={(event)=>{handleModal(event)}} type={modal?.type} data={modal?.data}/>
     </Box>
+
   );
 }
