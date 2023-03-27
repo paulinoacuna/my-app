@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import AppNavbar from '../../components/AppNavbar';
+import FloatingAction from '../../components/FloatingAction';
 import ManageUsers from '../../components/ManageUsers';
 import SideNavbar from '../../components/SideNavbar';
 
@@ -24,6 +25,7 @@ const [user, setUser] = useState();
     <div className='down' >
       <SideNavbar user={user}/>
       <ManageUsers/>
+      <FloatingAction/>
     </div>
     </div>
   )

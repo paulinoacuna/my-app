@@ -48,7 +48,26 @@ export const getAuth = async ({email,password}) => {
   }
 }
 
+export const getUsers = async (token)=>{
+  path = `${url}/user/getUsers`
 
+    
+  const response = await fetch(path, {
+
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",   
+        'Authorization': `Bearer ${token}`
+    },
+  }
+  );
+  
+  return response.json(); // parses JSON response into native JavaScript objects
+
+
+
+  
+}
 
   
 

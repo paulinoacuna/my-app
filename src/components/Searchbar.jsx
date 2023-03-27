@@ -17,7 +17,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import { Button } from '@mui/material';
 import { useState } from 'react';
-
+import LoadingButton from '@mui/lab/LoadingButton';
 
 //Estilos
 const Search = styled('div')(({ theme }) => ({
@@ -64,18 +64,21 @@ const Searchbar = ({type}) => {
 
 const [searchValue, setSearchValue] = useState("");
 const [inputValue, setInputValue] = useState("");
+
+const [loading, setLoading] = useState(false);
     
 const Search_btn = (value) => {
 
+  setLoading(true)
     if (value){
         if (value.trim() !== ""){
             setInputValue(value)
             setSearchValue(value.trim())
         }
     }
-
-
     //fetch de usuario value return searchValue
+
+  setLoading(false)
 }
 
 const Clear_btn = () => {
@@ -118,7 +121,7 @@ console.log(searchValue)
           </Search>
 
           <Button onClick={()=>Search_btn()} variant="contained" color="primary" >Buscar</Button>
-        
+          <LoadingButton loading={loading}/>
           <Box sx={{ flexGrow: 1 }} />
           <Button  onClick={()=>Clear_btn()} variant="contained" color="secondary" size='small' >Limpiar</Button>
 
