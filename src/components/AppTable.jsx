@@ -108,7 +108,7 @@ function createData(firstName, documentNumber, email, phone, typeDocument) {
 
 
 
-export default function AppTable({usersArray,activeModal}) {
+export default function AppTable({usersArray,activeModal,activeModalDelete}) {
 
   
   const [rows, setRows] = useState([]);
@@ -153,7 +153,8 @@ export default function AppTable({usersArray,activeModal}) {
 
   const deleteRow = (row)=> {
       //ver esta seguro modal
-      activeModal({open: true,type: "delete" , data: row})
+      
+      activeModalDelete({open: true,type: "deleteUser" , data: row})
   }
 
   /**
@@ -179,6 +180,7 @@ export default function AppTable({usersArray,activeModal}) {
             <StyledTableCell align="right">Email</StyledTableCell>
             <StyledTableCell align="right">Telefono</StyledTableCell>
             <StyledTableCell align="right">Editar</StyledTableCell>
+            <StyledTableCell align="right">Borrar</StyledTableCell>
             
             
           </TableRow>
@@ -207,6 +209,12 @@ export default function AppTable({usersArray,activeModal}) {
               <StyledTableCell align="right">
                   <IconButton onClick={()=>{editRow(row)}} color="info" aria-label="edit">
                       <EditIcon fontSize="small"/>
+                  </IconButton>
+              </StyledTableCell>
+
+              <StyledTableCell align="right">
+                  <IconButton  onClick={()=>{deleteRow(row)}} color="error" aria-label="delete">
+                    <DeleteIcon  fontSize="small"/>
                   </IconButton>
               </StyledTableCell>
 

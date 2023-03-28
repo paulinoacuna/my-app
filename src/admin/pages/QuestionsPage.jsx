@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import AppNavbar from '../../components/AppNavbar';
 import SideNavbar from '../../components/SideNavbar';
 import ManageQuestions from '../../components/ManageQuestions';
+import FloatingAction from '../../components/FloatingAction';
 
 const QuestionsPage = () => {
 
@@ -25,8 +26,12 @@ const [user, setUser] = useState();
     <div className='down' >
       <SideNavbar user={user}/>
       <ManageQuestions/>
+      <FloatingAction typeAction={"createQuestion"}/>
     </div>
     </div>
+
+    
+
   )
 }
 

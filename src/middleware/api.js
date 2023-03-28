@@ -78,6 +78,7 @@ export const updateUser = async (data)=> {
   let {token} = getLocalUser()
 
   Reflect.deleteProperty(data, 'password');
+  data.state = true
 
   switch (data.typeDocument) {
     case "CC":
@@ -183,5 +184,28 @@ console.log(data)
   );
   
   return response.json(); // parses JSON response into native JavaScript objects
+
+}
+
+
+export const deleteUser = async (data)=>{
+  let {token} = getLocalUser()
+
+console.log(data)
+  path = `${url}/user/update/${data.documentNumber}`
+
+  const response = await fetch(path, {
+
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",   
+        'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({state: false}),
+  }
+  );
+  
+  return response.json(); // parses JSON response into native JavaScript objects
+
 
 }

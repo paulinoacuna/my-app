@@ -13,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import AppModal from './AppModal';
 import CreateModal from './CreateModal';
+import DeleteModal from './DeleteModal';
 
 
 
@@ -59,9 +60,13 @@ const loadUsers = async ()=>{
 }
 
 const [modal, setModal] = useState({open: false,type: "editUser",  data: null});
+const [modalDelete, setModalDelete] = useState({open: false,type: "deleteUser",  data: null});
 
 const handleModal = (event) => {
   setModal(event)
+}
+const handleModalDelete = (event) => {
+  setModalDelete(event)
 }
 
 const handleRefresh = () => {
@@ -96,7 +101,7 @@ const handleFindUser = async(query)=> {
     <div style={{width: "80%", marginLeft: "15px"}}>
       <Searchbar type="usuario" loadAll={()=>{handleRefresh()}} findUser={ (query)=>{handleFindUser(query)}}/>
       <br />
-      <AppTable usersArray={users} activeModal={(event)=>{handleModal(event)} }/>
+      <AppTable usersArray={users} activeModalDelete={(event)=>{handleModalDelete(event)}} activeModal={(event)=>{handleModal(event)}}/>
       <ToastContainer 
             position="top-center"
             autoClose={10000}
@@ -112,6 +117,7 @@ const handleFindUser = async(query)=> {
       
       <CreateModal opened={modal?.open} activeModal={(event)=>{handleModal(event)}} refresh={()=>{handleRefresh()}} type={modal?.type} data={modal?.data}/>
 
+      <DeleteModal opened={modalDelete?.open} activeModal={(event)=>{handleModalDelete(event)}} refresh={()=>{handleRefresh()}} type={modalDelete?.type} data={modalDelete?.data}/>
 
 
     </div>
