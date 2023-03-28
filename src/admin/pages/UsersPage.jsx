@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import AppNavbar from '../../components/AppNavbar';
+import AppNavbar from '../../components/navigation/AppNavbar';
 import FloatingAction from '../../components/FloatingAction';
-import ManageUsers from '../../components/ManageUsers';
-import SideNavbar from '../../components/SideNavbar';
+import ManageUsers from '../../components/manage/ManageUsers';
+import SideNavbar from '../../components/navigation/SideNavbar';
 
 const UsersPage = () => {
 

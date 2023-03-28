@@ -14,9 +14,9 @@ import { object, string, number, date, InferType } from 'yup';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
-import { createUser, deleteUser, updateUser } from '../middleware/api';
-import SelectButton from './SelectButton';
-import { deleteQuestion } from '../middleware/apiQuestions';
+import { createUser, deleteUser, updateUser } from '../../middleware/api';
+import SelectButton from '../SelectButton';
+import { deleteQuestion } from '../../middleware/apiQuestions';
 
 const style = {
   position: 'absolute',

@@ -2,10 +2,10 @@
 import React, { useState,useEffect } from 'react'
 import { useNavigate} from "react-router-dom"
 //import AppCard from '../../components/AppCard';
-import AppNavbar from '../../components/AppNavbar';
+import AppNavbar from '../../components/navigation/AppNavbar';
 import DashBoard from '../../components/DashBoard';
 import FloatingAction from '../../components/FloatingAction';
-import SideNavbar from '../../components/SideNavbar';
+import SideNavbar from '../../components/navigation/SideNavbar';
 
 import "./styles.css"
 

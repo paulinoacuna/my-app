@@ -1,10 +1,9 @@
 import { async } from 'q';
 import React, { useEffect, useState } from 'react'
-import AppTable from './AppTable'
-import Searchbar from './Searchbar'
-import { getLocalUser } from '../helpers/ManageLocalStorage';
-import { getUsers } from '../middleware/api';
-import { getQuestions } from "../middleware/apiQuestions"
+import AppTable from '../table/AppTable'
+import Searchbar from '../navigation/Searchbar'
+import { getLocalUser } from '../../helpers/ManageLocalStorage';
+import { getUsers } from '../../middleware/api';
 import { useNavigate } from 'react-router';
 
 
@@ -12,22 +11,20 @@ import { useNavigate } from 'react-router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import AppModal from './AppModal';
-import CreateModal from './CreateModal';
-import QuestionsTable from './QuestionsTable';
-import DeleteModal from './DeleteModal';
+import CreateModal from '../modal/CreateModal';
+import DeleteModal from '../modal/DeleteModal';
 
 
 
-const ManageQuestions = () => {
+const ManageUsers = () => {
 
   const navigate = useNavigate()
-  const [questions, setQuestions] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
    const user = getLocalUser()
    if (user?.token){
-    loadQuestions()
+    loadUsers()
   }else{
     navigate("/auth/login")
   }
@@ -35,14 +32,14 @@ const ManageQuestions = () => {
 }, []);
 
 
-const loadQuestions = async ()=>{
+const loadUsers = async ()=>{
   
   try {
-    const response = await getQuestions()
+    const response = await getUsers()
 
     if(response?.state) {
-      localStorage.setItem("questions",JSON.stringify(response));
-      setQuestions(response?.questions)
+      localStorage.setItem("users",JSON.stringify(response));
+      setUsers(response?.users)
 
       
     }else{
@@ -59,11 +56,10 @@ const loadQuestions = async ()=>{
       position: "bottom-right",
       });
   }
-
 }
 
-const [modal, setModal] = useState({open: false,type: "editQuestion",  data: null});
-const [modalDelete, setModalDelete] = useState({open: false,type: "deleteQuestion",  data: null});
+const [modal, setModal] = useState({open: false,type: "editUser",  data: null});
+const [modalDelete, setModalDelete] = useState({open: false,type: "deleteUser",  data: null});
 
 const handleModal = (event) => {
   setModal(event)
@@ -73,13 +69,10 @@ const handleModalDelete = (event) => {
 }
 
 const handleRefresh = () => {
-  loadQuestions()
+  loadUsers()
 }
 
-const handleFindQuestion = async(query)=> {
-    console.log(query)
-  /*
-  
+const handleFindUser = async(query)=> {
   //event == user to find
   //en users buscar juan
   await loadUsers()
@@ -98,20 +91,16 @@ const handleFindQuestion = async(query)=> {
     setUsers(usersFinded)
 
     //console.log(users)
- */
+
+  }
+
 }
-
-
 
   return (
     <div style={{width: "80%", marginLeft: "15px"}}>
-
-      <Searchbar type="usuario" loadAll={()=>{handleRefresh()}} findUser={ (query)=>{handleFindQuestion(query)}}/>
-
+      <Searchbar type="usuario" loadAll={()=>{handleRefresh()}} findUser={ (query)=>{handleFindUser(query)}}/>
       <br />
-      
-      <QuestionsTable questionsArray={questions} activeModalDelete={(event)=>{handleModalDelete(event)} } activeModal={(event)=>{handleModal(event)} }/>
-
+      <AppTable usersArray={users} activeModalDelete={(event)=>{handleModalDelete(event)}} activeModal={(event)=>{handleModal(event)}}/>
       <ToastContainer 
             position="top-center"
             autoClose={10000}
@@ -124,16 +113,14 @@ const handleFindQuestion = async(query)=> {
             pauseOnHover
             theme="light" />
 
-    
-
+      
       <CreateModal opened={modal?.open} activeModal={(event)=>{handleModal(event)}} refresh={()=>{handleRefresh()}} type={modal?.type} data={modal?.data}/>
 
       <DeleteModal opened={modalDelete?.open} activeModal={(event)=>{handleModalDelete(event)}} refresh={()=>{handleRefresh()}} type={modalDelete?.type} data={modalDelete?.data}/>
-
 
 
     </div>
   )
 }
 
-export default ManageQuestions
+export default ManageUsers

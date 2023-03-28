@@ -14,8 +14,8 @@ import { object, string, number, date, InferType } from 'yup';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
-import { createUser, updateUser } from '../middleware/api';
-import SelectButton from './SelectButton';
+import { createUser, updateUser } from '../../middleware/api';
+import SelectButton from '../SelectButton';
 
 const style = {
   position: 'absolute',
@@ -118,11 +118,6 @@ const handleAction = async (type)=>{
 
             break;
     
-
-      case "createQuestion":
-         
-        
-      break;
   
       default:
   

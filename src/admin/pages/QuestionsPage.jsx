@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import AppNavbar from '../../components/AppNavbar';
-import SideNavbar from '../../components/SideNavbar';
-import ManageQuestions from '../../components/ManageQuestions';
+import AppNavbar from '../../components/navigation/AppNavbar';
+import SideNavbar from '../../components/navigation/SideNavbar';
+import ManageQuestions from '../../components/manage/ManageQuestions';
 import FloatingAction from '../../components/FloatingAction';
 
 const QuestionsPage = () => {

@@ -2,8 +2,8 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
-import AppModal from './AppModal';
-import CreateModal from './CreateModal';
+
+import CreateModal from './modal/CreateModal';
 import { useState } from 'react';
 
 export default function FloatingAction({typeAction}) {
