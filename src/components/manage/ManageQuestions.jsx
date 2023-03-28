@@ -13,7 +13,9 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-import UserModal from '../modal/UserModal';
+import QuestionModal from '../modal/QuestionModal';
+
+
 import QuestionsTable from '../table/QuestionsTable';
 import DeleteModal from '../modal/DeleteModal';
 
@@ -126,7 +128,7 @@ const handleFindQuestion = async(query)=> {
 
     
 
-      <UserModal opened={modal?.open} activeModal={(event)=>{handleModal(event)}} refresh={()=>{handleRefresh()}} type={modal?.type} data={modal?.data}/>
+      <QuestionModal opened={modal?.open} activeModal={(event)=>{handleModal(event)}} refresh={()=>{handleRefresh()}} type={modal?.type} data={modal?.data}/>
 
       <DeleteModal opened={modalDelete?.open} activeModal={(event)=>{handleModalDelete(event)}} refresh={()=>{handleRefresh()}} type={modalDelete?.type} data={modalDelete?.data}/>
 

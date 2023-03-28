@@ -54,3 +54,70 @@ export const deleteQuestion = async (data)=>{
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
+export const createQuestion = async (data)=>{
+  let {token} = getLocalUser()
+
+  const mapedData = {
+    name: data?.question,
+    options: [
+      {
+        name: data.options_1,
+        state: true
+      },
+      {
+        name: data.options_2,
+        state: false
+      },
+      {
+        name: data.options_3,
+        state: false
+      },
+      {
+        name: data.options_4,
+        state: false
+      }
+    ]
+  }
+
+
+
+
+  path = `${url}/questions/create`
+
+
+  const response = await fetch(path, {
+
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",   
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify(mapedData),
+  }
+  );
+  
+  return response.json(); // parses JSON response into native JavaScript objects
+
+}
+
+export const editQuestion = async (data)=>{
+  let {token} = getLocalUser()
+
+
+  path = `${url}/questions/updateQuestion/${data?.id}`
+
+
+  const response = await fetch(path, {
+
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",   
+      'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify({question: data?.question}),
+  }
+  );
+  
+  return response.json(); // parses JSON response into native JavaScript objects
+
+}
