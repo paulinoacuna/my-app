@@ -14,3 +14,20 @@ body {
       monospace;
   }
   
+  .option {
+    text-decoration: none;
+    list-style: none;
+    padding: 2px 2px;
+    background-color: white;
+  }
+  .option:hover{
+    background-color: rgb(203, 203, 203);
+  }
+
+  .field {
+    font-size: 1.2em;
+  }
+
+  .selectButton:hover {
+    background-color: #c0c0c0;
+  }

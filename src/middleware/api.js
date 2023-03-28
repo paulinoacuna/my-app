@@ -77,11 +77,38 @@ export const getUsers = async ()=>{
 export const updateUser = async (data)=> {
   let {token} = getLocalUser()
 
-  console.log(data)
 
+  switch (data.typeDocument) {
+    case "CC":
+      data.typeDocument = 1
+      break;
+      case "CE":
+      data.typeDocument = 2
+      break;
+      case "TI":
+      data.typeDocument = 3
+      break;
 
+    default:
+      data.typeDocument = 1
+      break;
+  }
+
+  switch (data.role) {
+    case "Administrador":
+      data.role = 1
+    break;
+    case "Estudiante":
+      data.role = 2
+      break;
     
-  path = `${url}/user/update/${data.document}`
+    default:
+      data.role = 1
+      break;
+  }
+
+console.log(data)
+  path = `${url}/user/update/${data.documentNumber}`
 
 
     
@@ -101,3 +128,59 @@ export const updateUser = async (data)=> {
 
 }
 
+
+export const createUser = async (data)=>{
+  let {token} = getLocalUser()
+
+  data.state = true
+  data.password = data.documentNumber.toString()
+  
+
+  switch (data.typeDocument) {
+    case "CC":
+      data.typeDocument = 1
+      break;
+      case "CE":
+      data.typeDocument = 2
+      break;
+      case "TI":
+      data.typeDocument = 3
+      break;
+
+    default:
+      data.typeDocument = 1
+      break;
+  }
+
+  switch (data.role) {
+    case "Administrador":
+      data.role = 1
+    break;
+    case "Estudiante":
+      data.role = 2
+      break;
+    
+    default:
+      data.role = 1
+      break;
+  }
+
+console.log(data)
+
+  path = `${url}/user/create`
+
+
+  const response = await fetch(path, {
+
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",   
+       // 'Authorization': `Bearer ${token}`
+    },
+    body: JSON.stringify(data),
+  }
+  );
+  
+  return response.json(); // parses JSON response into native JavaScript objects
+
+}

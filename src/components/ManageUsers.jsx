@@ -12,6 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import AppModal from './AppModal';
+import CreateModal from './CreateModal';
 
 
 
@@ -57,7 +58,7 @@ const loadUsers = async ()=>{
   }
 }
 
-const [modal, setModal] = useState({open: false,type: "info",  data: null});
+const [modal, setModal] = useState({open: false,type: "editUser",  data: null});
 
 const handleModal = (event) => {
   setModal(event)
@@ -67,7 +68,6 @@ const handleRefresh = () => {
   loadUsers()
 }
 
-console.log(modal)
   return (
     <div style={{width: "80%", marginLeft: "15px"}}>
       <Searchbar type="usuario"/>
@@ -85,7 +85,11 @@ console.log(modal)
             pauseOnHover
             theme="light" />
 
-      <AppModal opened={modal?.open} data={modal?.data} type={modal?.type} activeModal={(event)=>{handleModal(event)}} refresh={()=>handleRefresh()}/>
+      
+      <CreateModal opened={modal?.open} activeModal={(event)=>{handleModal(event)}} refresh={()=>{handleRefresh()}} type={modal?.type} data={modal?.data}/>
+
+
+
     </div>
   )
 }

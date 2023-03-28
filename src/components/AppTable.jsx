@@ -135,7 +135,7 @@ export default function AppTable({usersArray,activeModal}) {
       if(usersArray.length >= 1){
 
         usersArray?.map((user)=>{ 
-            tempArray.push(createData(user.firstName+" "+ user.surname, user.documentNumber, user.email, user.phone, user.typeDocument))
+            tempArray.push(createData(user.firstName+" "+user.secondName+" "+user.surname+" "+user.secondSurName, user.documentNumber, user.email, user.phone, user.typeDocument))
           
         })  
         setRows(tempArray)

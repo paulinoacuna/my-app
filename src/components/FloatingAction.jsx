@@ -9,7 +9,7 @@ import { useState } from 'react';
 export default function FloatingAction({typeAction}) {
 
 
-const [modal, setModal] = useState({open: false,type: "info",  data: null});
+const [modal, setModal] = useState({open: false,type: "createUser",  data: null});
 
 
 //createUser
@@ -25,10 +25,12 @@ const handleAction = (typeAction)=>{
 
     case "createQuestion":
       //active Modal
+      setModal({open: true,type: "createQuestion",  data: null})
       
     break;
   
     default:
+      setModal({open: true,type: "createUser",  data: null})
       break;
   }
 }
@@ -38,12 +40,14 @@ const handleModal = (event) => {
 }
 
 
+
+
   return (
     <Box sx={{ m: 1 , position: "fixed", right: 20, bottom: 20} }>
       <Fab onClick={()=>{handleAction(typeAction)}} color="primary" aria-label="add">
         <AddIcon />
       </Fab>
-       <CreateModal opened={modal?.open} activeModal={(event)=>{handleModal(event)}} type={modal?.type} data={modal?.data}/>
+       <CreateModal opened={modal?.open} activeModal={(event)=>{handleModal(event)}} refresh={()=>{}} type={modal?.type} data={modal?.data}/>
     </Box>
 
   );
