@@ -60,7 +60,11 @@ const Search = styled('div')(({ theme }) => ({
 
 
 
-const Searchbar = ({type,findUser,loadAll}) => {
+const Searchbar = ({type,find,loadAll}) => {
+
+
+  //findQuestion
+  //type: "pregunta"
 
 const [searchValue, setSearchValue] = useState("");
 const [inputValue, setInputValue] = useState("");
@@ -76,10 +80,7 @@ const Search_btn = (value) => {
             setInputValue(value)
             setSearchValue(value.trim())
         }
-        if(type == "usuario"){
-          //fetch de usuario value return searchValue
-          findUser(value.trim())
-        }
+          find(value.trim())
     }
   
 

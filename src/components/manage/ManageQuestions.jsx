@@ -78,29 +78,23 @@ const handleRefresh = () => {
   loadQuestions()
 }
 
-const handleFindQuestion = async(query)=> {
-    console.log(query)
-  /*
-  
+const handleFind = async(query)=> {
+
   //event == user to find
   //en users buscar juan
-  await loadUsers()
+  await loadQuestions()
  
-  const usersFinded = users.filter((user)=>{return (user.firstName.includes(query)) ||
-                                    user.secondName.includes(query) || user.surname.includes(query)
-                                    || user.secondSurName.includes(query) || 
-                                    user.email.includes(query) ||
-                                    user.documentNumber.includes(query) ||
-                                    user.phone.includes(query)
-                                  
-                                  })
+  const questionsFinded = questions.filter((question)=>{return(question.question.includes(query))
+  
+  })
 
   //console.log(usersFinded)
-  if(usersFinded != undefined && usersFinded.length >= 1){
-    setUsers(usersFinded)
+  if(questionsFinded != undefined && questionsFinded.length >= 1){
+    setQuestions(questionsFinded)
 
     //console.log(users)
- */
+ 
+}
 }
 
 
@@ -108,7 +102,7 @@ const handleFindQuestion = async(query)=> {
   return (
     <div style={{width: "80%", marginLeft: "15px"}}>
 
-      <Searchbar type="usuario" loadAll={()=>{handleRefresh()}} findUser={ (query)=>{handleFindQuestion(query)}}/>
+      <Searchbar type="pregunta" loadAll={()=>{handleRefresh()}} find={ (query)=>{handleFind(query)}}/>
 
       <br />
       
