@@ -77,6 +77,7 @@ export const getUsers = async ()=>{
 export const updateUser = async (data)=> {
   let {token} = getLocalUser()
 
+  Reflect.deleteProperty(data, 'password');
 
   switch (data.typeDocument) {
     case "CC":
