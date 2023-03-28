@@ -60,7 +60,7 @@ const Search = styled('div')(({ theme }) => ({
 
 
 
-const Searchbar = ({type}) => {
+const Searchbar = ({type,findUser,loadAll}) => {
 
 const [searchValue, setSearchValue] = useState("");
 const [inputValue, setInputValue] = useState("");
@@ -70,13 +70,19 @@ const [loading, setLoading] = useState(false);
 const Search_btn = (value) => {
 
   setLoading(true)
+
     if (value){
         if (value.trim() !== ""){
             setInputValue(value)
             setSearchValue(value.trim())
         }
+        if(type == "usuario"){
+          //fetch de usuario value return searchValue
+          findUser(value.trim())
+        }
     }
-    //fetch de usuario value return searchValue
+  
+
 
   setLoading(false)
 }
@@ -87,11 +93,10 @@ const Clear_btn = () => {
 
     setInputValue("")
     //limiar form
+    loadAll()
    
 }
   
-        
-console.log(searchValue)
 
   return (
     <Box sx={{ flexGrow: 1 , width: 1}}>
@@ -120,7 +125,7 @@ console.log(searchValue)
             />
           </Search>
 
-          <Button onClick={()=>Search_btn()} variant="contained" color="primary" >Buscar</Button>
+          <Button onClick={()=>Search_btn(searchValue)} variant="contained" color="primary" >Buscar</Button>
           <LoadingButton loading={loading}/>
           <Box sx={{ flexGrow: 1 }} />
           <Button  onClick={()=>Clear_btn()} variant="contained" color="secondary" size='small' >Limpiar</Button>

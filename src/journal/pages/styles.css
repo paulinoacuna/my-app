@@ -12,7 +12,7 @@
 
 .up{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: #262649;
     color: white;
 }

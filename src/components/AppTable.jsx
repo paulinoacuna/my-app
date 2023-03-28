@@ -139,7 +139,7 @@ export default function AppTable({usersArray,activeModal}) {
           
         })  
         setRows(tempArray)
-        console.log(rows)
+        //console.log(rows)
       }
       
   

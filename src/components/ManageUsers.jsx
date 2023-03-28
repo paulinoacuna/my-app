@@ -68,11 +68,35 @@ const handleRefresh = () => {
   loadUsers()
 }
 
+const handleFindUser = async(query)=> {
+  //event == user to find
+  //en users buscar juan
+  await loadUsers()
+ 
+  const usersFinded = users.filter((user)=>{return (user.firstName.includes(query)) ||
+                                    user.secondName.includes(query) || user.surname.includes(query)
+                                    || user.secondSurName.includes(query) || 
+                                    user.email.includes(query) ||
+                                    user.documentNumber.includes(query) ||
+                                    user.phone.includes(query)
+                                  
+                                  })
+
+  //console.log(usersFinded)
+  if(usersFinded != undefined && usersFinded.length >= 1){
+    setUsers(usersFinded)
+
+    //console.log(users)
+
+  }
+
+}
+
   return (
     <div style={{width: "80%", marginLeft: "15px"}}>
-      <Searchbar type="usuario"/>
+      <Searchbar type="usuario" loadAll={()=>{handleRefresh()}} findUser={ (query)=>{handleFindUser(query)}}/>
       <br />
-      <AppTable usersArray={users} activeModal={(event)=>{handleModal(event)}}/>
+      <AppTable usersArray={users} activeModal={(event)=>{handleModal(event)} }/>
       <ToastContainer 
             position="top-center"
             autoClose={10000}
