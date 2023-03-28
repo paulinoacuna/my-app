@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import CreateModal from '../modal/CreateModal';
+import UserModal from '../modal/UserModal';
 import DeleteModal from '../modal/DeleteModal';
 
 
@@ -114,7 +114,7 @@ const handleFindUser = async(query)=> {
             theme="light" />
 
       
-      <CreateModal opened={modal?.open} activeModal={(event)=>{handleModal(event)}} refresh={()=>{handleRefresh()}} type={modal?.type} data={modal?.data}/>
+      <UserModal opened={modal?.open} activeModal={(event)=>{handleModal(event)}} refresh={()=>{handleRefresh()}} type={modal?.type} data={modal?.data}/>
 
       <DeleteModal opened={modalDelete?.open} activeModal={(event)=>{handleModalDelete(event)}} refresh={()=>{handleRefresh()}} type={modalDelete?.type} data={modalDelete?.data}/>
 

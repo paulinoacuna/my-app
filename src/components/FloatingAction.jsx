@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 
-import CreateModal from './modal/CreateModal';
+import UserModal from './modal/UserModal';
 import { useState } from 'react';
 
 export default function FloatingAction({typeAction}) {
@@ -47,7 +47,7 @@ const handleModal = (event) => {
       <Fab onClick={()=>{handleAction(typeAction)}} color="primary" aria-label="add">
         <AddIcon />
       </Fab>
-       <CreateModal opened={modal?.open} activeModal={(event)=>{handleModal(event)}} refresh={()=>{}} type={modal?.type} data={modal?.data}/>
+       <UserModal opened={modal?.open} activeModal={(event)=>{handleModal(event)}} refresh={()=>{}} type={modal?.type} data={modal?.data}/>
     </Box>
 
   );

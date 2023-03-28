@@ -29,7 +29,7 @@ const style = {
   p: 4,
 };
 
-export default function CreateModal({opened, data, type, activeModal, refresh}) {
+export default function UserModal({opened, data, type, activeModal, refresh}) {
 
 
   
