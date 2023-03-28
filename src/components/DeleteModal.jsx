@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import { createUser, deleteUser, updateUser } from '../middleware/api';
 import SelectButton from './SelectButton';
+import { deleteQuestion } from '../middleware/apiQuestions';
 
 const style = {
   position: 'absolute',
@@ -32,7 +33,6 @@ const style = {
 export default function DeleteModal({opened, data, type, activeModal, refresh}) {
 
 
-  
   const myRef = React.useRef("")
   const [open, setOpen] = React.useState(false);
  
@@ -85,6 +85,40 @@ const handleAction = async (type)=>{
             }
    
         
+      break;
+
+      case "deleteQuestion":
+
+            //ok
+            try {
+          
+              const response = await deleteQuestion(data)
+          
+              if(response?.state) {
+                  toast.success('Eliminada con éxito', {
+                      position: "top-center",
+                      });
+    
+                  handleClose()
+    
+                  //refresh
+                  refresh()
+      
+              }else{
+                //alerta, correo y password invalidos
+                toast.warn('Error al eliminar. Intente nuevamente.', {
+                  position: "bottom-right",
+                  });
+              }
+          
+            } catch (error) {
+              console.error(error);
+              //alerta, correo y password invalidos
+              toast.warn('Error en la solicitud. Intenta mas tarde.', {
+                position: "bottom-right",
+                });
+    
+              }
       break;
   
       default:

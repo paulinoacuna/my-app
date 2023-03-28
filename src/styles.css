@@ -24,6 +24,14 @@ body {
     background-color: rgb(203, 203, 203);
   }
 
+  .optionCell:hover{
+    background-color: #79b4ce79;
+  }
+
+  .optionRow:hover {
+    background-color: #c0c0c0;
+  }
+
   .field {
     font-size: 1.2em;
   }

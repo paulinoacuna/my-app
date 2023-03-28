@@ -28,7 +28,7 @@ import EditIcon from '@mui/icons-material/Edit';
 //Styles
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "#044b3a",
+    backgroundColor: "#3d0665",
     color: theme.palette.common.white,
   },
   [`&.${tableCellClasses.body}`]: {
@@ -38,7 +38,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
-    backgroundColor: theme.palette.action.hover,
+    //backgroundColor: theme.palette.action.hover,
   },
   // hide last border
   '&:last-child td, &:last-child th': {
@@ -102,13 +102,12 @@ function TablePaginationActions(props) {
 }
 
 //Define Data
-function createData(firstName, documentNumber, email, phone, typeDocument) {
-  return { firstName, documentNumber, email, phone, typeDocument};
+function createData(id,question , options_1, options_2, options_3, options_4) {
+  return { id, question , options_1, options_2, options_3, options_4};
 }
 
-
-
-export default function AppTable({usersArray,activeModal,activeModalDelete}) {
+export default function QuestionsTable({questionsArray,activeModal,activeModalDelete}) {
+  
 
   
   const [rows, setRows] = useState([]);
@@ -132,29 +131,33 @@ export default function AppTable({usersArray,activeModal,activeModalDelete}) {
     useEffect(() => {
       const tempArray = []
 
-      if(usersArray.length >= 1){
+      if(questionsArray.length >= 1){
 
-        usersArray?.map((user)=>{ 
-            tempArray.push(createData(user.firstName+" "+user.secondName+" "+user.surname+" "+user.secondSurName, user.documentNumber, user.email, user.phone, user.typeDocument))
+        questionsArray?.map((question)=>{ 
+          //TODO
+            tempArray.push(createData(question.id,question.question, question.options[0].option,
+                                                         question.options[1].option,
+                                                         question.options[2].option,
+                                                         question.options[3].option))
           
         })  
         setRows(tempArray)
-        //console.log(rows)
+        console.log(rows)
       }
       
   
-    }, [usersArray]);
+    }, [questionsArray]);
   
   const editRow = (row)=> {
       //ver modal y editar campos
-      activeModal({open: true,type: "editUser" , data: row})
+      activeModal({open: true,type: "editQuestion" , data: row})
 
   }
 
   const deleteRow = (row)=> {
       //ver esta seguro modal
       
-      activeModalDelete({open: true,type: "deleteUser" , data: row})
+      activeModalDelete({open: true,type: "deleteQuestion" , data: row})
   }
 
   /**
@@ -173,12 +176,13 @@ export default function AppTable({usersArray,activeModal,activeModalDelete}) {
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
-          <TableRow>
-            <StyledTableCell>Nombre</StyledTableCell>
-            <StyledTableCell align="right">Documento</StyledTableCell>
-            <StyledTableCell align="center">Tipo Documento</StyledTableCell>
-            <StyledTableCell align="right">Email</StyledTableCell>
-            <StyledTableCell align="right">Telefono</StyledTableCell>
+          <TableRow> 
+            <StyledTableCell>Pregunta</StyledTableCell>
+            <StyledTableCell align="center">Opción A</StyledTableCell>
+            <StyledTableCell align="center">Opción B</StyledTableCell>
+            <StyledTableCell align="center">Opción C</StyledTableCell>
+            <StyledTableCell align="center">Opción D</StyledTableCell>
+
             <StyledTableCell align="right">Editar</StyledTableCell>
             <StyledTableCell align="right">Borrar</StyledTableCell>
             
@@ -194,17 +198,12 @@ export default function AppTable({usersArray,activeModal,activeModalDelete}) {
           ).map((row,i) => (
             <StyledTableRow className='optionRow' key={i}>
               <StyledTableCell component="th" scope="row">
-                {row.firstName}
+                {row.question}
               </StyledTableCell>
-              <StyledTableCell align="right">{row.documentNumber}</StyledTableCell>
-              <StyledTableCell align="center">{row.typeDocument == 1 ? "C.C." :
-                                              row.typeDocument == 2 ? "C.E." :
-                                              row.typeDocument == 3 ? "T.I." :
-                                              "--"
-                                    }</StyledTableCell>
-
-              <StyledTableCell align="right">{row.email}</StyledTableCell>
-              <StyledTableCell align="right">{row.phone}</StyledTableCell>
+              <StyledTableCell className='optionCell' align="center">{row.options_1}</StyledTableCell>
+              <StyledTableCell className='optionCell' align="center">{row.options_2}</StyledTableCell>
+              <StyledTableCell className='optionCell' align="center">{row.options_3}</StyledTableCell>
+              <StyledTableCell className='optionCell' align="center">{row.options_4}</StyledTableCell>
 
               <StyledTableCell align="right">
                   <IconButton onClick={()=>{editRow(row)}} color="info" aria-label="edit">
