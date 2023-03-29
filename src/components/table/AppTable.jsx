@@ -192,7 +192,7 @@ export default function AppTable({usersArray,activeModal,activeModalDelete}) {
             ? rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             : rows
           ).map((row,i) => (
-            <StyledTableRow className='optionRow' key={i}>
+            <StyledTableRow key={i}>
               <StyledTableCell component="th" scope="row">
                 {row.firstName}
               </StyledTableCell>

@@ -98,7 +98,7 @@ const handleFindUser = async(query)=> {
 
   return (
     <div style={{width: "80%", marginLeft: "15px"}}>
-      <Searchbar type="usuario" loadAll={()=>{handleRefresh()}} findUser={ (query)=>{handleFindUser(query)}}/>
+      <Searchbar type="usuario" loadAll={()=>{handleRefresh()}} find={ (query)=>{handleFindUser(query)}}/>
       <br />
       <AppTable usersArray={users} activeModalDelete={(event)=>{handleModalDelete(event)}} activeModal={(event)=>{handleModal(event)}}/>
       <ToastContainer 

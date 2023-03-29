@@ -30,15 +30,22 @@ import JournalApp from "./JournalApp"
 //import MyPage from "./examples/MyPage"
 
 import "./styles.css"
-//import 'bootstrap/dist/css/bootstrap.css';
-// Put any other imports below so that CSS from your
-// components takes precedence over default styles.
 
-//Componentes siempre en mayuscula!!
+ /* Credenciales
+
+ Estudiante
+
+    email: "wais@gmail.com",
+    password: "1010054875"
+
+  Profesor
+
+
+    email: "pepito@gmail.com",
+    password: "passAdmin"
+  */
+
 ReactDom.createRoot(document.getElementById("root")).render(
-    //renderizar todo lo que esta en root
-    //<HelloWorld titulo="Formulario feo" fecha="03/02/2023"/>
-    //<Giphy/>
 
     //restrict mode genera warnings
   <React.StrictMode>   
