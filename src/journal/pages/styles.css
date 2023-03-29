@@ -1,0 +1,53 @@
+
+.app-container {
+    background-color: #ececec;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 98vw;
+    margin: 0 auto ;
+    height: 97vh;     
+  
+}
+
+.up{
+    display: flex;
+    justify-content: space-between;
+    background-color: #262649;
+    color: white;
+}
+.down {
+    display: flex;
+    padding: 20px 0px;
+}
+
+.left-navbar {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    flex-basis: 250px;
+   
+    margin-left: 1px;
+    background-color: #262649;
+    height: 550px;
+}
+
+.right-dashboard {
+    display: flex;
+    margin-left: 10px;
+    flex-flow: row wrap;
+}
+
+.item {
+    text-decoration: none;
+    padding: 15px 10px;
+
+    margin: 0px 0px 0px 0px;
+    border-bottom: 1px solid #d3d3d5; 
+    color: white;
+    
+}
+
+.item:hover {
+    background-color: #14152d;
+}

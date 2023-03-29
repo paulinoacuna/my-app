@@ -1,104 +1,45 @@
-/* styles.css normalmente se usa para definir estilos globales de root*/
-
-* {
-    font-family: Helvetica, Arial, sans-serif;
-    background-color: rgb(234, 234, 234);
+body {
+    margin: 0;
+    
+     background: linear-gradient(to bottom left,rgb(13, 18, 74), rgb(60, 26, 26)) !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
-  body {
-    padding: 60px;
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
   }
   
-  input {
+  .option {
+    text-decoration: none;
+    list-style: none;
+    padding: 2px 2px;
     background-color: white;
-    border-radius: 5px;
-    border: 1px solid rgb(97, 32, 158);
-    color: black;
-    font-size: 1.2rem;
-    outline: none;
-    padding: 10px 15px;
-    width: 100%;
-    margin-bottom: 15px;
   }
-  
-  h2 {
-    font-size: 1.5rem;
-  }
-  
-  h3 {
-    font-size: 3rem;
-    margin-bottom: 5px;
-  }
-  
-  
-  .card img {
-    width: 100%;
+  .option:hover{
+    background-color: rgb(203, 203, 203);
   }
 
-  button{
-      width: 100px;
-      padding: 7px 0;
-      background-color: green;
-      color: white;
-      border-radius: 5px;
-      border: none;
-      box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+  .optionCell:hover{
+    background-color: #79b4ce79;
   }
 
-  button:hover{
-    background-color: rgb(0, 188, 0);
+  .optionCell:active{
+    background-color: #238c23a3;
   }
 
-  img{
-   width: 300px;
-   height: auto
+  .optionRow:hover {
+    background-color: #c0c0c0;
   }
 
-  .gifsContainer {
-    display: flex;
-    flex-wrap: wrap;
- 
-  }
-/*mis estilos*/
-  .container {
-    display: flex;
-    flex-direction: column;
+  .field {
+    font-size: 1.2em;
   }
 
-  .gifGrid {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  .card {
-    align-content: center;
-    align-items: center;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.03);
-    display: flex;
-    flex-direction: column;
-    height: 0%;  
-    margin: 0 0.5%;
-    justify-content: center;
-    overflow: hidden;
-    width: 48%;
-  }
-
-  h4 {
-    font-size: 1.5em;
-  }
-  
-
-  .card p {
-    color: teal;
-    background-color: white;
-    flex: 1;
-    font-size: 1.4rem;
-    margin-top: 5px;
-    padding: 5px 20px 0px 20px;
-    text-align: center;
-
+  .selectButton:hover {
+    background-color: #c0c0c0;
   }
