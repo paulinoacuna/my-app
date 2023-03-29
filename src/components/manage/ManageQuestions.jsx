@@ -21,15 +21,21 @@ import DeleteModal from '../modal/DeleteModal';
 
 
 
-const ManageQuestions = () => {
+const ManageQuestions = ({role}) => {
 
   const navigate = useNavigate()
   const [questions, setQuestions] = useState([]);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
    const user = getLocalUser()
    if (user?.token){
     loadQuestions()
+    if (user?.role == "admin"){
+      setShow(true)
+    }else if (user?.role == "student"){
+      setShow(false)
+    }
   }else{
     navigate("/auth/login")
   }
@@ -101,8 +107,9 @@ const handleFind = async(query)=> {
 
   return (
     <div style={{width: "80%", marginLeft: "15px"}}>
-
+      <div style={{display: show ? 'block' : 'none' }}  >
       <Searchbar type="pregunta" loadAll={()=>{handleRefresh()}} find={ (query)=>{handleFind(query)}}/>
+      </div>
 
       <br />
       

@@ -21,10 +21,25 @@ const Login = ({setformValues, loading}) => {
   const [passwordShown, setPasswordShown] = useState(false);
   
   const initialValues = {
-    email: "pepito@gmail.com",
-    password: "passAdmin"
+    email: "wais@gmail.com",
+    password: "1010054875"
+
   }
 
+
+  /* estudiante 
+
+  email: "wais@gmail.com",
+    password: "1010054875"
+
+    admin
+
+
+ email: "pepito@gmail.com",
+    password: "passAdmin"
+
+  1010054875
+  */
   const submit = ()=>{
     setformValues(myRef.current.values)
   }

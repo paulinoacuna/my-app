@@ -19,6 +19,7 @@ const [user, setUser] = useState();
     //get user localStorage
     const user = JSON.parse(localStorage.getItem("user"))
     user?.token ? setUser(user) : navigate("/auth/login")
+
   }, []);
 
   return (

@@ -24,6 +24,7 @@ import { useTheme } from '@mui/material/styles';
 import { Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
+import { getLocalUser } from '../../helpers/ManageLocalStorage';
 
 //Styles
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -113,6 +114,18 @@ export default function QuestionsTable({questionsArray,activeModal,activeModalDe
   const [rows, setRows] = useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [show, setShow] = useState(false);
+
+
+  useEffect(() => {
+    const user = getLocalUser()
+    if (user?.role == "admin"){
+       setShow(true)
+     } else if (user?.role == "student"){
+       setShow(false)
+     }
+   
+ }, []);
 
 
 
@@ -148,6 +161,8 @@ export default function QuestionsTable({questionsArray,activeModal,activeModalDe
   
     }, [questionsArray]);
   
+
+
   const editRow = (row)=> {
       //ver modal y editar campos
       activeModal({open: true,type: "editQuestion" , data: row})
@@ -182,9 +197,13 @@ export default function QuestionsTable({questionsArray,activeModal,activeModalDe
             <StyledTableCell align="center">Opción B</StyledTableCell>
             <StyledTableCell align="center">Opción C</StyledTableCell>
             <StyledTableCell align="center">Opción D</StyledTableCell>
-
-            <StyledTableCell align="right">Editar</StyledTableCell>
-            <StyledTableCell align="right">Borrar</StyledTableCell>
+          {show && 
+              <> 
+                <StyledTableCell align="right">Editar</StyledTableCell>
+                <StyledTableCell align="right">Borrar</StyledTableCell>
+              </>
+          }
+            
             
             
           </TableRow>
@@ -205,7 +224,9 @@ export default function QuestionsTable({questionsArray,activeModal,activeModalDe
               <StyledTableCell className='optionCell' align="center">{row.options_3}</StyledTableCell>
               <StyledTableCell className='optionCell' align="center">{row.options_4}</StyledTableCell>
 
-              <StyledTableCell align="right">
+
+              {show && <>
+                <StyledTableCell align="right">
                   <IconButton onClick={()=>{editRow(row)}} color="info" aria-label="edit">
                       <EditIcon fontSize="small"/>
                   </IconButton>
@@ -216,8 +237,8 @@ export default function QuestionsTable({questionsArray,activeModal,activeModalDe
                     <DeleteIcon  fontSize="small"/>
                   </IconButton>
               </StyledTableCell>
+              </>}
 
-              
             </StyledTableRow>
           ))}
              {emptyRows > 0 && (

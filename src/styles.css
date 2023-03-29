@@ -28,6 +28,10 @@ body {
     background-color: #79b4ce79;
   }
 
+  .optionCell:active{
+    background-color: #238c23a3;
+  }
+
   .optionRow:hover {
     background-color: #c0c0c0;
   }
