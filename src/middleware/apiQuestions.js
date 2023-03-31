@@ -15,6 +15,8 @@ export const getQuestions = async ()=>{
   let {token} = getLocalUser()
   path = `${url}/form/getquestions`
 
+  
+
     
   const response = await fetch(path, {
 
@@ -25,7 +27,7 @@ export const getQuestions = async ()=>{
     },
   }
   );
-  
+
   return response.json(); // parses JSON response into native JavaScript objects
 
 
@@ -62,19 +64,19 @@ export const createQuestion = async (data)=>{
     options: [
       {
         name: data.options_1,
-        state: true
+        state: data.picked == "is_correct_1" ? true : false
       },
       {
         name: data.options_2,
-        state: false
+        state: data.picked == "is_correct_2" ? true : false
       },
       {
         name: data.options_3,
-        state: false
+        state: data.picked == "is_correct_3" ? true : false
       },
       {
         name: data.options_4,
-        state: false
+        state: data.picked == "is_correct_4" ? true : false
       }
     ]
   }
@@ -102,6 +104,8 @@ export const createQuestion = async (data)=>{
 
 export const editQuestion = async (data)=>{
   let {token} = getLocalUser()
+  console.log("Back no tiene funcionalidad de editar respuestas:")
+  console.log(data)
 
 
   path = `${url}/questions/updateQuestion/${data?.id}`

@@ -14,7 +14,7 @@ import { object, string, number, date, InferType } from 'yup';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
-import { createUser, updateUser } from '../../middleware/api';
+import { createUser, updateUser } from '../../middleware/apiUsers';
 import SelectButton from '../SelectButton';
 import { createQuestion, editQuestion } from '../../middleware/apiQuestions';
 
@@ -34,9 +34,16 @@ export default function UserModal({opened, data, type, activeModal, refresh}) {
 
   const myRef = React.useRef("")
   const [open, setOpen] = React.useState(false);
+  
+const [isCorrect, setisCorrect] = useState([false,false,false,false]);
+
+
+
 
   useEffect(() => {
       opened ? setOpen(true) : setOpen(false);
+      
+
   }, [opened,type]);
 
   
@@ -138,15 +145,17 @@ const initialValues = ({
 
   id: data?.id,
   question: data?.question,
-  options_1: data?.options_1,
-  options_2: data?.options_2,
-  options_3: data?.options_3,
-  options_4: data?.options_4
+  options_1: data?.option_1,
+  options_2: data?.option_2,
+  options_3: data?.option_3,
+  options_4: data?.option_4,
+  picked: data?.is_correct_1 ? "is_correct_1" : data?.is_correct_2 ? "is_correct_2" : data?.is_correct_3 ? "is_correct_3" : data?.is_correct_4 ? "is_correct_4" : ""
 
 })
 
 const [selectValueRole, setSelectValueRole] = useState("Estudiante");
 const [selectValueDoc, setSelectValueDoc] = useState("C.C.");
+
 
   return (
     <>
@@ -179,27 +188,39 @@ const [selectValueDoc, setSelectValueDoc] = useState("C.C.");
             <br />
 
             <div style={{display:"flex", justifyContent: "space-around"}}>
-            <div>
+            <div style={{display:"flex"}}>
+              <Field type="radio" name="picked" value="is_correct_1" />
+              <div style={{marginLeft: "15px"}}>
               <label> Opción A</label>
               <Field disabled={type == "editQuestion" ? true : false} className="field" name="options_1" type="text" />
+              </div>
             </div>
 
-            <div >
+            <div style={{display:"flex"}}>
+              <Field type="radio" name="picked" value="is_correct_2" />
+              <div style={{marginLeft: "15px"}}>
               <label> Opción B</label>
               <Field disabled={type == "editQuestion" ? true : false} className="field" name="options_2" type="text" />
+              </div>
             </div>
             </div>
             <br />
 
             <div style={{display:"flex", justifyContent: "space-around"}}>
-            <div>
+            <div style={{display:"flex"}}>
+            <Field type="radio" name="picked" value="is_correct_3" />
+              <div style={{marginLeft: "15px"}}>
               <label> Opción C</label>
               <Field disabled={type == "editQuestion" ? true : false} className="field" name="options_3" type="text" />
+              </div>
             </div>
 
-            <div>
+            <div style={{display:"flex"}}>
+               <Field type="radio" name="picked" value="is_correct_4" />
+              <div style={{marginLeft: "15px"}}>
               <label> Opción C</label>
               <Field disabled={type == "editQuestion" ? true : false} className="field" name="options_4" type="text" />
+              </div>
             </div>
             </div>
 

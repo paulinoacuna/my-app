@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 
 
-export default function SelectButton({handleValue, type}) {
+export default function SelectButton({handleValue, type,typeDocument}) {
 
     const [selectValue, setSelectValue] = React.useState("estudiante");
 
@@ -15,9 +15,9 @@ export default function SelectButton({handleValue, type}) {
         handleValue(selectValue)
     }, [selectValue]);
 
-
+console.log(typeDocument)
   return (
-    <SelectUnstyled className="field selectButton" defaultValue={type == "role" ? "Estudiante": "C.C."} onChange={(e, newValue) => setSelectValue(newValue)}>
+    <SelectUnstyled className="field selectButton" defaultValue={typeDocument == 1 ? "C.C." : typeDocument == 2 ? "C.E." : typeDocument == 3 ? "T.I." : "C.C."} onChange={(e, newValue) => setSelectValue(newValue)}>
 
         { type == "role" && 
              <>

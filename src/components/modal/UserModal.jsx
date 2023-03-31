@@ -14,7 +14,7 @@ import { object, string, number, date, InferType } from 'yup';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
-import { createUser, updateUser } from '../../middleware/api';
+import { createUser, updateUser } from '../../middleware/apiUsers';
 import SelectButton from '../SelectButton';
 
 const style = {
@@ -38,8 +38,10 @@ export default function UserModal({opened, data, type, activeModal, refresh}) {
  
 
 
+  const [typeDoc, setTypeDoc] = useState(1);
   useEffect(() => {
       opened ? setOpen(true) : setOpen(false);
+      setTypeDoc(data?.typeDocument)
       
       
   }, [opened,type]);
@@ -166,7 +168,6 @@ const initialValues = ({
   password: "",
 })
 
-const [selectValueRole, setSelectValueRole] = useState("Estudiante");
 const [selectValueDoc, setSelectValueDoc] = useState("C.C.");
 
   return (
@@ -180,7 +181,7 @@ const [selectValueDoc, setSelectValueDoc] = useState("C.C.");
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            {type == "editUser" ? <>Editar Usuario </>: <>Crear Usuario</>}
+            {type == "editUser" ? <>Editar Estudiante </>: <>Crear Estudiante</>}
           </Typography>
           <Typography id="modal-modal-description" variant="span" component="span">
             {type == "editUser" ? <>Completa los campos requeridos para editar el registro </>: <>Ingresa los datos requeridos para registrar un nuevo usuario</>}
@@ -218,43 +219,45 @@ const [selectValueDoc, setSelectValueDoc] = useState("C.C.");
             <br /> 
 
 
-          <div style={{display:"flex" }}>
+          <div style={{display:"flex" , justifyContent: "center"}}>
+
+
+          <div style={{marginRight: "30px"}}>
+              <label> Tipo Doc. ▼</label>
+              <Field style={{display: "none"}}  name="typeDocument" type="text" value={selectValueDoc}/>
+              <SelectButton type={"document"} typeDocument={typeDoc} handleValue={(value)=>{setSelectValueDoc(value)}}/>
+            </div>  
+         
 
             <div style={{marginRight: "30px"}}>
               <label>Documento</label>
               <Field className="field"  name="documentNumber" type="number"/>
             </div>
 
-            <div style={{marginRight: "30px"}}>
-              <label> Tipo Doc. ▼</label>
-              <Field style={{display: "none"}}  name="typeDocument" type="text" value={selectValueDoc}/>
-              <SelectButton type={"document"} handleValue={(value)=>{setSelectValueDoc(value)}}/>
-            </div>
+         
+
 
             <div style={{marginRight: "30px"}}>
-              <label>Teléfono</label>
-              <Field className="field"  name="phone" type="number"/>
+              <label> Correo</label>
+              <Field className="field"  name="email" type="email" placeholder="ejemplo@email.com"/>
             </div>
-
-            <div style={{marginRight: "30px"}}>
-              <label>Rol ▼</label>
-              <Field style={{display: "none"}} name="role" type="text" value={selectValueRole}/>
-              <SelectButton type={"role"} handleValue={(value)=>{setSelectValueRole(value)}}/>
-            </div>
+       
+           
           </div>
 
 
           <br />
 
 
-          <div style={{display:"flex"}}>
+          <div style={{display:"flex", justifyContent: "space-around"}}>
 
-            <div style={{marginRight: "30px"}}>
-              <label> Correo</label>
-              <Field className="field"  name="email" type="email" placeholder="ejemplo@email.com"/>
+        
+          <div style={{marginRight: "30px", marginLeft: "12px"}}>
+              <label>Teléfono</label>
+              <Field className="field"  name="phone" type="number"/>
             </div>
 
-            <div style={{display: "none" }}>
+            <div style={{visibility: "hidden" }}>
               <label> Contraseña</label>  
               <Field className="field" name="password" type="password" placeholder="contraseña"/>
             </div>

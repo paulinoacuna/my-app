@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import AppTable from '../table/AppTable'
 import Searchbar from '../navigation/Searchbar'
 import { getLocalUser } from '../../helpers/ManageLocalStorage';
-import { getUsers } from '../../middleware/api';
+import { getUsers } from '../../middleware/apiUsers';
 import { useNavigate } from 'react-router';
 
 
@@ -39,6 +39,7 @@ const loadUsers = async ()=>{
 
     if(response?.state) {
       localStorage.setItem("users",JSON.stringify(response));
+      response?.users.sort((a,b)=>{return a.firstName.localeCompare(b.firstName);})
       setUsers(response?.users)
 
       

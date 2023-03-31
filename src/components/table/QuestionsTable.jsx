@@ -103,13 +103,14 @@ function TablePaginationActions(props) {
 }
 
 //Define Data
-function createData(id,question , options_1, options_2, options_3, options_4) {
-  return { id, question , options_1, options_2, options_3, options_4};
+function createData(id,question , {option_1,is_correct_1}, {option_2,is_correct_2},
+  {option_3,is_correct_3}, {option_4,is_correct_4}) {
+  return { id,question , option_1,is_correct_1, option_2,is_correct_2,
+  option_3,is_correct_3, option_4,is_correct_4};
 }
 
 export default function QuestionsTable({questionsArray,activeModal,activeModalDelete}) {
   
-
   
   const [rows, setRows] = useState([]);
   const [page, setPage] = React.useState(0);
@@ -146,16 +147,16 @@ export default function QuestionsTable({questionsArray,activeModal,activeModalDe
 
       if(questionsArray.length >= 1){
 
-        questionsArray?.map((question)=>{ 
-          //TODO
-            tempArray.push(createData(question.id,question.question, question.options[0].option,
-                                                         question.options[1].option,
-                                                         question.options[2].option,
-                                                         question.options[3].option))
-          
-        })  
+        questionsArray?.map((question)=>{
+          tempArray.push(createData(question.id,question.question, {option_1: question.options[0].option,is_correct_1: question.options[0].is_correct},
+            {option_2: question.options[1].option,is_correct_2: question.options[1].is_correct},
+            {option_3: question.options[2].option,is_correct_3: question.options[2].is_correct},
+            {option_4: question.options[3].option,is_correct_4: question.options[3].is_correct})
+        
+      ) 
+        })
         setRows(tempArray)
-        console.log(rows)
+        //console.log(rows)
       }
       
   
@@ -219,10 +220,10 @@ export default function QuestionsTable({questionsArray,activeModal,activeModalDe
               <StyledTableCell component="th" scope="row">
                 {row.question}
               </StyledTableCell>
-              <StyledTableCell className='optionCell' align="center">{row.options_1}</StyledTableCell>
-              <StyledTableCell className='optionCell' align="center">{row.options_2}</StyledTableCell>
-              <StyledTableCell className='optionCell' align="center">{row.options_3}</StyledTableCell>
-              <StyledTableCell className='optionCell' align="center">{row.options_4}</StyledTableCell>
+              <StyledTableCell className='optionCell' align="center">{row.option_1 }</StyledTableCell>
+              <StyledTableCell className='optionCell' align="center">{row.option_2 }</StyledTableCell>
+              <StyledTableCell className='optionCell' align="center">{row.option_3 }</StyledTableCell>
+              <StyledTableCell className='optionCell' align="center">{row.option_4 }</StyledTableCell>
 
 
               {show && <>

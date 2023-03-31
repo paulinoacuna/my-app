@@ -1,5 +1,5 @@
 import React, { useRef,useState,useEffect } from 'react'
-import {getAuth} from "../../middleware/api"
+import {getAuth} from "../../middleware/apiUsers"
 import {useNavigate} from "react-router-dom"
 
 //components

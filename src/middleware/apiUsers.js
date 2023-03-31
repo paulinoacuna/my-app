@@ -134,6 +134,8 @@ console.log(data)
 export const createUser = async (data)=>{
   let {token} = getLocalUser()
 
+  console.log(data.typeDocument)
+
   data.state = true
   data.password = data.documentNumber.toString()
   
@@ -179,7 +181,7 @@ console.log(data)
       "Content-Type": "application/json",   
        // 'Authorization': `Bearer ${token}`
     },
-    body: JSON.stringify(data),
+    //body: JSON.stringify(data),
   }
   );
   
